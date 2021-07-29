@@ -11,10 +11,10 @@ Work collaboratively with your classmates to come-up with the best performing mo
 **Based on MovieLens_MatrixFactorization_Keras_7.py**
 
 * Try different things that may improve the overall recommendation results. For example:
-           * Different neural network topologies 
-           * Different regularization types
-           * Different optimizer settings
-           * Use more / less side-info columns
+  * Different neural network topologies 
+  * Different regularization types
+  * Different optimizer settings
+  * Use more / less side-info columns
 
 **Do not limit yourself to these ideas.  You are encouraged to try anything that you think could be useful**
 
