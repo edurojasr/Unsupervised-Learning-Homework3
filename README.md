@@ -66,5 +66,11 @@ Run 3:
 Execution time: 408.6
 Best Test RMSE:      0.9028 at epoch: 20
 
+# Experiments with hidden nodes and latents factors
+
+From professor Rojas:
+
+![test_results](img/hidden_nodes_latent_factors.png)
+
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
