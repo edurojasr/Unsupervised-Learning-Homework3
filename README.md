@@ -52,7 +52,19 @@ Work collaboratively with your classmates to come-up with the best performing mo
 
 # Current best results
 
-Incoming tests
+![test_results](img/validaciones.png)
+
+Run 1: 
+Execution time: 384.9
+Best Test RMSE:      0.9026 at epoch: 46
+
+Run 2:
+Execution time: 380.2
+Best Test RMSE:      0.9014 at epoch: 35
+
+Run 3:
+Execution time: 408.6
+Best Test RMSE:      0.9028 at epoch: 20
 
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
