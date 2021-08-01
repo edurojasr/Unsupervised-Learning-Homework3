@@ -10,6 +10,10 @@ by Unsupervised Learning Class 2021
 Texas Tech University - Costa Rica
 """
 
+import os
+# Reduse tensorflow logs in terminal after model works fine
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 import time
 import pickle
 import numpy as np
@@ -18,21 +22,17 @@ import sklearn.metrics
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-#
+
 # Load and prepare data
-#
+
 
 # Load the training and test data from the Pickle file
 with open("movielens_dataset.pickle", "rb") as f:
       train_data, train_labels, test_data, test_labels = pickle.load(f)
 
 # Get the side info
-with open("movielens_side_info.pickle", "rb") as f:
-      users_side_info, movies_side_info = pickle.load(f)
-
-# Drop the columns we're not going to use
-# For some reason I was not able to make the model converge with this data in it
-movies_side_info = movies_side_info.drop(columns="Date")
+with open("movielens_side_info.pickle_v2", "rb") as f:
+    users_side_info, movies_side_info = pickle.load(f)
 
 # Standardize scale of columns in user side-info table
 for col in users_side_info.columns:
@@ -102,16 +102,19 @@ n_movie_cols = train_movie.shape[1]
 # Train Model
 #
 
-n_latent_factors = 5
-n_hidden = 5
+n_latent_factors = 15
+n_hidden = 80
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
-regularization_scale = 0
-print("L2 regulatization scale: {}".format(regularization_scale))
-
 # Start Keras model
 # This is not a sequential model, so we will assemble it manually
+first_dropout_rate = 0.2
+second_dropout_rate = 0.08
+maxnorm_max_value = 100 # Essentially disable max_norm
+print("Dropout rate first layers: {}".format(first_dropout_rate))
+print("Dropout rate second layers: {}".format(second_dropout_rate))
+print("Max-Norm max value: {}".format(maxnorm_max_value))
 
 # Users vector embedding
 users_input = tf.keras.layers.Input(shape=[n_user_cols])
@@ -119,14 +122,18 @@ users_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
         kernel_initializer='he_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
         )(users_input)
+user_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(users_hidden)
+user_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(user_dropout_layer)
+
 users_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
-        )(users_hidden)
+        )(user_maxnorm_layer)
+users_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(users_embedded)
+users_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(users_embedded_dropout)
+        
 
 # Movies vector embedding
 movies_input = tf.keras.layers.Input(shape=[n_movie_cols])
@@ -134,29 +141,38 @@ movies_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
         kernel_initializer='he_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
         )(movies_input)
+movies_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(movies_hidden)
+movies_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_dropout_layer)
 movies_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
-        )(movies_hidden)
+        )(movies_maxnorm_layer)
+movies_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(movies_embedded)
+movies_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_embedded_dropout)
 
 # Dot product of users & movies
-dot_product = tf.keras.layers.dot([users_embedded, movies_embedded], axes=1)
+dot_product = tf.keras.layers.dot([users_embedded_maxnorm, movies_embedded_maxnorm], axes=1)
+
+linear_layer = tf.keras.layers.Dense(
+        1,
+        activation="linear",
+        kernel_initializer='glorot_normal', bias_initializer='zeros',
+        )(dot_product)
 
 # Construct the model
-model = tf.keras.Model([users_input, movies_input], dot_product)
+model = tf.keras.Model([users_input, movies_input], linear_layer)
 
 # Show the model summary
 #model.summary()
 
 # Define the optimizer
 
-# ADAM optimizer
-optimizer = tf.keras.optimizers.Adam()
-print("Optimizer: ADAM.  Default learning rate")
+# Optimizer
+learning_rate=0.03
+optimizer = tf.keras.optimizers.Adagrad(learning_rate=learning_rate)
+print("Optimizer: Adagrad.  Learning rate={}".format(learning_rate))
 
 # Define model
 model.compile(
@@ -197,3 +213,5 @@ plt.ylabel('MSE')
 plt.xlabel('Epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
+
+
