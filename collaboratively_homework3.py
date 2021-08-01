@@ -197,5 +197,3 @@ plt.ylabel('MSE')
 plt.xlabel('Epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-
-

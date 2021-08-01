@@ -37,5 +37,21 @@ Work collaboratively with your classmates to come-up with the best performing mo
   
 # Good luck!
 
+# My setup
+* Thinkpad t14s
+* CPU:  AMD 4750u PRO
+* iGPU: Vega 8 Renoir
+* RAM:  16GB
+
+# Base test results
+
+![Base_result](img/Base_test.png)
+
+* Execution time: 280.7
+* Best Test RMSE: 0.9266 at epoch 17 
+
+# Current best results
+img/Base_test.png
+
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
