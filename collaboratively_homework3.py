@@ -102,6 +102,9 @@ n_movie_cols = train_movie.shape[1]
 # Train Model
 #
 
+# Suggesting by Prof. Juan Carlos Rojas of stop using the L2 regularization
+
+# Values proposed by Cristian
 n_latent_factors = 15
 n_hidden = 80
 print("Factorizing into {} latent factors".format(n_latent_factors))
@@ -109,6 +112,8 @@ print("With {} hidden nodes".format(n_hidden))
 
 # Start Keras model
 # This is not a sequential model, so we will assemble it manually
+# Drop values proposed by Diana
+# Maxnorm added by Michael
 first_dropout_rate = 0.2
 second_dropout_rate = 0.08
 maxnorm_max_value = 100 # Essentially disable max_norm
