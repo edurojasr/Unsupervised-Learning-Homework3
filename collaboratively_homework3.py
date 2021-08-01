@@ -126,7 +126,8 @@ users_input = tf.keras.layers.Input(shape=[n_user_cols])
 users_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
-        kernel_initializer='he_normal', bias_initializer='zeros',
+        kernel_initializer='he_normal', 
+        bias_initializer='zeros',
         )(users_input)
 user_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(users_hidden)
 user_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(user_dropout_layer)
@@ -134,7 +135,8 @@ user_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, a
 users_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
-        kernel_initializer='glorot_normal', bias_initializer='zeros',
+        kernel_initializer='glorot_normal', 
+        bias_initializer='zeros',
         )(user_maxnorm_layer)
 users_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(users_embedded)
 users_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(users_embedded_dropout)
@@ -145,14 +147,17 @@ movies_input = tf.keras.layers.Input(shape=[n_movie_cols])
 movies_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
-        kernel_initializer='he_normal', bias_initializer='zeros',
+        kernel_initializer='he_normal', 
+        bias_initializer='zeros',
         )(movies_input)
 movies_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(movies_hidden)
 movies_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_dropout_layer)
+
 movies_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
-        kernel_initializer='glorot_normal', bias_initializer='zeros',
+        kernel_initializer='glorot_normal', 
+        bias_initializer='zeros',
         )(movies_maxnorm_layer)
 movies_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(movies_embedded)
 movies_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_embedded_dropout)
@@ -163,7 +168,8 @@ dot_product = tf.keras.layers.dot([users_embedded_maxnorm, movies_embedded_maxno
 linear_layer = tf.keras.layers.Dense(
         1,
         activation="linear",
-        kernel_initializer='glorot_normal', bias_initializer='zeros',
+        kernel_initializer='glorot_normal', 
+        bias_initializer='zeros',
         )(dot_product)
 
 # Construct the model
