@@ -51,7 +51,8 @@ Work collaboratively with your classmates to come-up with the best performing mo
 * Best Test RMSE: 0.9266 at epoch 17 
 
 # Current best results
-img/Base_test.png
+
+Incoming tests
 
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
