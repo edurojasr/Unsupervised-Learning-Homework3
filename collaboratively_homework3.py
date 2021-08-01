@@ -1,22 +1,16 @@
-""" Problem 1
-    Unsupervised Learning
-    MovieLens 100k dataset
-    Matrix Factorization with side information
+# Unsupervised Learning
+# MovieLens 100k dataset
+# Matrix Factorization with side information
+# By Juan Carlos Rojas and Unsupervised Learning class (collaborative effort)
+# Copyright 2021, Texas Tech University - Costa Rica
 
-This is the collaboratively homework 3
-
-Base on Juan Carlos Rojas examples
-by Unsupervised Learning Class 2021 
-Texas Tech University - Costa Rica
-"""
-
-import time
-import pickle
-import numpy as np
 import pandas as pd
+import numpy as np
+import pickle
 import sklearn.metrics
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import time
 
 #
 # Load and prepare data
@@ -31,8 +25,7 @@ with open("movielens_side_info.pickle", "rb") as f:
       users_side_info, movies_side_info = pickle.load(f)
 
 # Drop the columns we're not going to use
-# For some reason I was not able to make the model converge with this data in it
-movies_side_info = movies_side_info.drop(columns="Date")
+#movies_side_info = movies_side_info.drop(columns="Date")
 
 # Standardize scale of columns in user side-info table
 for col in users_side_info.columns:
@@ -107,11 +100,11 @@ n_hidden = 5
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
-regularization_scale = 0
-print("L2 regulatization scale: {}".format(regularization_scale))
-
 # Start Keras model
 # This is not a sequential model, so we will assemble it manually
+first_dropout_rate = 0.15
+second_dropout_rate = 0.05
+maxnorm_max_value = 5
 
 # Users vector embedding
 users_input = tf.keras.layers.Input(shape=[n_user_cols])
@@ -119,14 +112,18 @@ users_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
         kernel_initializer='he_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
         )(users_input)
+user_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(users_hidden)
+user_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(user_dropout_layer)
+
 users_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
-        )(users_hidden)
+        )(user_maxnorm_layer)
+users_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(users_embedded)
+users_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(users_embedded_dropout)
+        
 
 # Movies vector embedding
 movies_input = tf.keras.layers.Input(shape=[n_movie_cols])
@@ -134,20 +131,29 @@ movies_hidden = tf.keras.layers.Dense(
         n_hidden,
         activation="elu",
         kernel_initializer='he_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
         )(movies_input)
+movies_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(movies_hidden)
+movies_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_dropout_layer)
 movies_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal', bias_initializer='zeros',
-        kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
-        )(movies_hidden)
+        #kernel_regularizer=tf.keras.regularizers.L2(regularization_scale),
+        )(movies_maxnorm_layer)
+movies_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(movies_embedded)
+movies_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_embedded_dropout)
 
 # Dot product of users & movies
-dot_product = tf.keras.layers.dot([users_embedded, movies_embedded], axes=1)
+dot_product = tf.keras.layers.dot([users_embedded_maxnorm, movies_embedded_maxnorm], axes=1)
+
+linear_layer = tf.keras.layers.Dense(
+        1,
+        activation="linear",
+        kernel_initializer='glorot_normal', bias_initializer='zeros',
+        )(dot_product)
 
 # Construct the model
-model = tf.keras.Model([users_input, movies_input], dot_product)
+model = tf.keras.Model([users_input, movies_input], linear_layer)
 
 # Show the model summary
 #model.summary()
@@ -155,8 +161,9 @@ model = tf.keras.Model([users_input, movies_input], dot_product)
 # Define the optimizer
 
 # ADAM optimizer
-optimizer = tf.keras.optimizers.Adam()
-print("Optimizer: ADAM.  Default learning rate")
+learning_rate=0.001
+optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+print("Optimizer: ADAM.  Learning rate={}".format(learning_rate))
 
 # Define model
 model.compile(
