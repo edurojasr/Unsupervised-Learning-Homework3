@@ -105,8 +105,9 @@ n_movie_cols = train_movie.shape[1]
 # Suggesting by Prof. Juan Carlos Rojas of stop using the L2 regularization
 
 # Values proposed by Cristian
-n_latent_factors = 15
-n_hidden = 80
+# After the collective hidden nodes and latent factors experiments
+n_latent_factors = 50
+n_hidden = 50
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 

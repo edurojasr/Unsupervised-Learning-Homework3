@@ -72,5 +72,8 @@ From professor Rojas:
 
 ![test_results](img/hidden_nodes_latent_factors.png)
 
+After this collectives experiments we determinate that 50 hidden nodes 
+and 50 latent factor are optimal for this exercise
+
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
