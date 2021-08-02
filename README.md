@@ -56,24 +56,24 @@ Parameters:
 
 * Factorizing into 50 latent factors
 * With 50 hidden nodes
-* Dropout rate first layers: 0.2
-* Dropout rate second layers: 0.08
+* Dropout rate first layers: 0.5
+* Dropout rate second layers: 0.05
 * Max-Norm max value: 100
-*Optimizer: Adagrad.  Learning rate=0.03
+* Optimizer: Adagrad.  Learning rate=0.08
 
-![test_results](img/validacion_2.png)
+![test_results](img/validation_3.png)
 
 Run 1:
-Execution time: 373.7
-Best Test RMSE:      0.9002 at epoch: 15
+Execution time: 394.2
+Best Test RMSE:      0.8985 at epoch: 42
 
-Run2:
-Execution time: 415.8
-Best Test RMSE:      0.9037 at epoch: 24
+Run 2:
+Execution time: 447.5
+Best Test RMSE:      0.8984 at epoch: 30
 
-Run3:
-Execution time: 414.5
-Best Test RMSE:      0.9006 at epoch: 16
+Run 3:
+Execution time: 455.3
+Best Test RMSE:      0.9022 at epoch: 28
 
 # Experiments with hidden nodes and latents factors
 

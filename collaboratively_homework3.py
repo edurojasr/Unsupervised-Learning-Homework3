@@ -115,8 +115,9 @@ print("With {} hidden nodes".format(n_hidden))
 # This is not a sequential model, so we will assemble it manually
 # Drop values proposed by Diana
 # Maxnorm added by Michael
-first_dropout_rate = 0.2
-second_dropout_rate = 0.08
+# New parameters by Professor Rojas and others
+first_dropout_rate = 0.5
+second_dropout_rate = 0.05
 maxnorm_max_value = 100 # Essentially disable max_norm
 print("Dropout rate first layers: {}".format(first_dropout_rate))
 print("Dropout rate second layers: {}".format(second_dropout_rate))
@@ -182,7 +183,8 @@ model = tf.keras.Model([users_input, movies_input], linear_layer)
 # Define the optimizer
 
 # Optimizer
-learning_rate=0.03
+# New value by Professor Rojas
+learning_rate=0.08
 optimizer = tf.keras.optimizers.Adagrad(learning_rate=learning_rate)
 print("Optimizer: Adagrad.  Learning rate={}".format(learning_rate))
 
