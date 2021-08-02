@@ -52,19 +52,27 @@ Work collaboratively with your classmates to come-up with the best performing mo
 
 # Current best results
 
-![test_results](img/validaciones.png)
+Parameters:
 
-Run 1: 
-Execution time: 384.9
-Best Test RMSE:      0.9026 at epoch: 46
+* Factorizing into 50 latent factors
+* With 50 hidden nodes
+* Dropout rate first layers: 0.2
+* Dropout rate second layers: 0.08
+* Max-Norm max value: 100
+*Optimizer: Adagrad.  Learning rate=0.03
 
-Run 2:
-Execution time: 380.2
-Best Test RMSE:      0.9014 at epoch: 35
+![test_results](img/validacion_2.png)
 
-Run 3:
-Execution time: 408.6
-Best Test RMSE:      0.9028 at epoch: 20
+Run 1:
+Execution time: 373.7
+Best Test RMSE:      0.9002 at epoch: 15
+
+Run2:
+Execution time: 415.8
+Best Test RMSE:      0.9037 at epoch: 24
+
+Execution time: 414.5
+Best Test RMSE:      0.9006 at epoch: 16
 
 # Experiments with hidden nodes and latents factors
 
