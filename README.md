@@ -11,7 +11,7 @@ Work collaboratively with your classmates to come-up with the best performing mo
 **Based on MovieLens_MatrixFactorization_Keras_7.py**
 
 * Try different things that may improve the overall recommendation results. For example:
-  * Different neural network topologies 
+  * Different neural network topologies
   * Different regularization types
   * Different optimizer settings
   * Use more / less side-info columns
@@ -32,9 +32,9 @@ Work collaboratively with your classmates to come-up with the best performing mo
           * 5 points per positive contribution
       3. You will lose points if you:
            * Submit a solution that is inferior to the best published
-           * Keep improvements to yourself, without sharing them 
+           * Keep improvements to yourself, without sharing them
            * Not citing the contributions of others that you adopted
-  
+
 # Good luck!
 
 # My setup
@@ -71,9 +71,9 @@ Package                 Version
 ![Base_result](img/Base_test.png)
 
 * Execution time: 280.7
-* Best Test RMSE: 0.9266 at epoch 17 
+* Best Test RMSE: 0.9266 at epoch 17
 
-# Current best results (updated 2-ago-2021 9:35pm)
+# Current best results (updated 2-ago-2021 11:46pm)
 
 Parameters:
 
@@ -83,12 +83,14 @@ Parameters:
 * Dropout rate second layers: 0
 * Max-Norm max value: 4
 * Optimizer: Adagrad.  Learning rate=0.03
+* Activation funcion for users hidden layer and movies hidden layer: LeakyRelu
 
-![test_results](img/validation_4.png)
+![test_results](img/validation_5.png)
 
-* Run 1: Execution time: 480.8 Best Test RMSE:      0.8975 at epoch: 25
-* Run 2: Execution time: 488.0 Best Test RMSE:      0.8972 at epoch: 24
-* Run 3: Execution time: 495.1 Best Test RMSE:      0.8970 at epoch: 20
+
+* Run 1: Execution time: 317.0 Best Test RMSE:      0.8964 at epoch: 38
+* Run 2: Execution time: 326.7 Best Test RMSE:      0.8964 at epoch: 42
+* Run 3: Execution time: 317.5 Best Test RMSE:      0.8972 at epoch: 43
 
 # Experiments with hidden nodes and latents factors
 
@@ -96,7 +98,7 @@ From professor Rojas:
 
 ![test_results](img/hidden_nodes_latent_factors.png)
 
-After this collectives experiments we determinate that 50 hidden nodes 
+After this collectives experiments we determinate that 50 hidden nodes
 and 50 latent factor are optimal for this exercise
 
 # Key contributions credit
@@ -104,12 +106,13 @@ and 50 latent factor are optimal for this exercise
 * Dr Rojas
 * dianaponcefaerron17
 * michael.cw02
-* chrisajivi88 
+* chrisajivi88
 * suscalder
 * sergiosmcr
 * Rafael C
 * Deykel
 * alcofo2191
+* mriosm1992@gmail.com
 
 # Validation team
 
