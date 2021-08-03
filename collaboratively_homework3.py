@@ -107,7 +107,7 @@ n_movie_cols = train_movie.shape[1]
 # Values proposed by Cristian
 # After the collective hidden nodes and latent factors experiments
 n_latent_factors = 50
-n_hidden = 55 # by Diana
+n_hidden = 100 # by Rafael
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
@@ -117,8 +117,8 @@ print("With {} hidden nodes".format(n_hidden))
 # Maxnorm added by Michael
 # New parameters by Professor Rojas and others
 first_dropout_rate = 0.5
-second_dropout_rate = 0.05
-maxnorm_max_value = 100 # Essentially disable max_norm
+second_dropout_rate = 0 # By Dr Rojas
+maxnorm_max_value = 4 # By Deykel
 print("Dropout rate first layers: {}".format(first_dropout_rate))
 print("Dropout rate second layers: {}".format(second_dropout_rate))
 print("Max-Norm max value: {}".format(maxnorm_max_value))
@@ -183,7 +183,7 @@ model = tf.keras.Model([users_input, movies_input], linear_layer)
 # Define the optimizer
 
 # Optimizer
-learning_rate=0.08
+learning_rate=0.03
 optimizer = tf.keras.optimizers.Adagrad(learning_rate=learning_rate)
 print("Optimizer: Adagrad.  Learning rate={}".format(learning_rate))
 

@@ -73,16 +73,16 @@ Package                 Version
 * Execution time: 280.7
 * Best Test RMSE: 0.9266 at epoch 17 
 
-# Current best results
+# Current best results (updated 2-ago-2021 9:35pm)
 
 Parameters:
 
 * Factorizing into 50 latent factors
-* With 55 hidden nodes
+* With 100 hidden nodes
 * Dropout rate first layers: 0.5
-* Dropout rate second layers: 0.05
-* Max-Norm max value: 100
-* Optimizer: Adagrad.  Learning rate=0.08
+* Dropout rate second layers: 0
+* Max-Norm max value: 4
+* Optimizer: Adagrad.  Learning rate=0.03
 
 ![test_results](img/validation_3.png)
 
@@ -107,7 +107,7 @@ From professor Rojas:
 After this collectives experiments we determinate that 50 hidden nodes 
 and 50 latent factor are optimal for this exercise
 
-# Contributions credit
+# Key contributions credit
 
 * Dr Rojas
 * dianaponcefaerron17
@@ -115,10 +115,13 @@ and 50 latent factor are optimal for this exercise
 * chrisajivi88 
 * suscalder
 * sergiosmcr
+* Rafael C
+* Deykel
+* alcofo2191
 
 # Validation team
 
-
+Unsupervised Learning Class 2021!!!
 
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
