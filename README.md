@@ -43,6 +43,29 @@ Work collaboratively with your classmates to come-up with the best performing mo
 * iGPU: Vega 8 Renoir
 * RAM:  16GB
 
+# Python environment
+
+Package                 Version
+----------------------- -------------------
+* imbalanced-learn        0.8.0
+* imblearn                0.0
+* keras-nightly           2.5.0.dev2021032900
+* Keras-Preprocessing     1.1.2
+* matplotlib              3.4.2
+* numpy                   1.19.5
+* pandas                  1.2.5
+* pip                     20.3.4
+* scikit-image            0.18.2
+* scikit-learn            0.24.2
+* scipy                   1.7.0
+* seaborn                 0.11.1
+* tensorboard-data-server 0.6.1
+* tensorboard-plugin-wit  1.8.0
+* tensorflow              2.5.0
+* tensorflow-estimator    2.5.0
+* termcolor               1.1.0
+* xgboost                 1.4.2
+
 # Base test results
 
 ![Base_result](img/Base_test.png)
@@ -55,7 +78,7 @@ Work collaboratively with your classmates to come-up with the best performing mo
 Parameters:
 
 * Factorizing into 50 latent factors
-* With 50 hidden nodes
+* With 55 hidden nodes
 * Dropout rate first layers: 0.5
 * Dropout rate second layers: 0.05
 * Max-Norm max value: 100
@@ -83,6 +106,19 @@ From professor Rojas:
 
 After this collectives experiments we determinate that 50 hidden nodes 
 and 50 latent factor are optimal for this exercise
+
+# Contributions credit
+
+* Dr Rojas
+* dianaponcefaerron17
+* michael.cw02
+* chrisajivi88 
+* suscalder
+* sergiosmcr
+
+# Validation team
+
+
 
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program

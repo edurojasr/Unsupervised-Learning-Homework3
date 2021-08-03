@@ -107,7 +107,7 @@ n_movie_cols = train_movie.shape[1]
 # Values proposed by Cristian
 # After the collective hidden nodes and latent factors experiments
 n_latent_factors = 50
-n_hidden = 50
+n_hidden = 55 # by Diana
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
@@ -183,7 +183,6 @@ model = tf.keras.Model([users_input, movies_input], linear_layer)
 # Define the optimizer
 
 # Optimizer
-# New value by Professor Rojas
 learning_rate=0.08
 optimizer = tf.keras.optimizers.Adagrad(learning_rate=learning_rate)
 print("Optimizer: Adagrad.  Learning rate={}".format(learning_rate))
@@ -227,5 +226,3 @@ plt.ylabel('MSE')
 plt.xlabel('Epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-
-
