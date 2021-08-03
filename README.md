@@ -73,7 +73,7 @@ Package                 Version
 * Execution time: 280.7
 * Best Test RMSE: 0.9266 at epoch 17
 
-# Current best results (updated 2-ago-2021 11:46pm)
+# Current best results (updated 3-ago-2021 11:28am)
 
 Parameters:
 
@@ -85,12 +85,12 @@ Parameters:
 * Optimizer: Adagrad.  Learning rate=0.03
 * Activation funcion for users hidden layer and movies hidden layer: LeakyRelu
 
-![test_results](img/validation_5.png)
+![test_results](img/validation_6.png)
 
 
-* Run 1: Execution time: 317.0 Best Test RMSE:      0.8964 at epoch: 38
-* Run 2: Execution time: 326.7 Best Test RMSE:      0.8964 at epoch: 42
-* Run 3: Execution time: 317.5 Best Test RMSE:      0.8972 at epoch: 43
+* Run 1: Execution time: 507.3 Best Test RMSE: 0.8954 at epoch: 36
+* Run 2: Execution time: 517.3 Best Test RMSE: 0.8960 at epoch: 28
+* Run 3: Execution time: 524.1 Best Test RMSE: 0.8972 at epoch: 32
 
 # Experiments with hidden nodes and latents factors
 
@@ -112,7 +112,8 @@ and 50 latent factor are optimal for this exercise
 * Rafael C
 * Deykel
 * alcofo2191
-* mriosm1992@gmail.com
+* mriosm1992
+* eduardo.rojasr
 
 # Validation team
 
