@@ -84,19 +84,11 @@ Parameters:
 * Max-Norm max value: 4
 * Optimizer: Adagrad.  Learning rate=0.03
 
-![test_results](img/validation_3.png)
+![test_results](img/validation_4.png)
 
-Run 1:
-Execution time: 394.2
-Best Test RMSE:      0.8985 at epoch: 42
-
-Run 2:
-Execution time: 447.5
-Best Test RMSE:      0.8984 at epoch: 30
-
-Run 3:
-Execution time: 455.3
-Best Test RMSE:      0.9022 at epoch: 28
+* Run 1: Execution time: 480.8 Best Test RMSE:      0.8975 at epoch: 25
+* Run 2: Execution time: 488.0 Best Test RMSE:      0.8972 at epoch: 24
+* Run 3: Execution time: 495.1 Best Test RMSE:      0.8970 at epoch: 20
 
 # Experiments with hidden nodes and latents factors
 
