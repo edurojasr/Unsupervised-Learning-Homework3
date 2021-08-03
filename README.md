@@ -84,13 +84,15 @@ Parameters:
 * Max-Norm max value: 4
 * Optimizer: Adagrad.  Learning rate=0.03
 * Activation funcion for users hidden layer and movies hidden layer: LeakyRelu
+* Batch Size: 128
+* Number of epochs: 100
 
-![test_results](img/validation_6.png)
+![test_results](img/validation_7.png)
 
 
-* Run 1: Execution time: 507.3 Best Test RMSE: 0.8954 at epoch: 36
-* Run 2: Execution time: 517.3 Best Test RMSE: 0.8960 at epoch: 28
-* Run 3: Execution time: 524.1 Best Test RMSE: 0.8972 at epoch: 32
+* Run 1: Execution time: 376.5 Best Test RMSE:      0.8968 at epoch: 74
+* Run 2: Execution time: 372.8 Best Test RMSE:      0.8950 at epoch: 73
+* Run 3: Execution time: 335.5 Best Test RMSE:      0.8953 at epoch: 79
 
 # Experiments with hidden nodes and latents factors
 

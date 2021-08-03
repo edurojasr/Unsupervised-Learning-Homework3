@@ -196,8 +196,9 @@ model.compile(
         )
 
 # Train the neural network
-n_epochs = 50
-batch_size = 32
+# Batch size and epochs as proposed by Sergio Salazar
+n_epochs = 100
+batch_size = 128
 
 start_time = time.time()
 history = model.fit(
