@@ -122,15 +122,16 @@ maxnorm_max_value = 4 # By Deykel
 print("Dropout rate first layers: {}".format(first_dropout_rate))
 print("Dropout rate second layers: {}".format(second_dropout_rate))
 print("Max-Norm max value: {}".format(maxnorm_max_value))
+print("Using activation function: LeakyReLU")
 
 # Users vector embedding
 users_input = tf.keras.layers.Input(shape=[n_user_cols])
 users_hidden = tf.keras.layers.Dense(
         n_hidden,
-        # activation suggested by mriosm1992@gmail.com
+        # activation suggested by mriosm1992
         activation=tf.keras.layers.LeakyReLU(alpha=0.25),
         kernel_initializer='he_normal',
-        bias_initializer='zeros',
+        bias_initializer='zeros'
         )(users_input)
 user_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(users_hidden)
 user_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(user_dropout_layer)
@@ -139,7 +140,7 @@ users_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal',
-        bias_initializer='zeros',
+        bias_initializer='zeros'
         )(user_maxnorm_layer)
 users_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(users_embedded)
 users_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(users_embedded_dropout)
@@ -149,10 +150,10 @@ users_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_valu
 movies_input = tf.keras.layers.Input(shape=[n_movie_cols])
 movies_hidden = tf.keras.layers.Dense(
         n_hidden,
-        # activation suggested by mriosm1992@gmail.com
+        # activation suggested by mriosm1992
         activation=tf.keras.layers.LeakyReLU(alpha=0.25),
         kernel_initializer='he_normal',
-        bias_initializer='zeros',
+        bias_initializer='zeros'
         )(movies_input)
 movies_dropout_layer = tf.keras.layers.Dropout(first_dropout_rate)(movies_hidden)
 movies_maxnorm_layer = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_dropout_layer)
@@ -161,7 +162,7 @@ movies_embedded = tf.keras.layers.Dense(
         n_latent_factors,
         activation="linear",
         kernel_initializer='glorot_normal',
-        bias_initializer='zeros',
+        bias_initializer='zeros'
         )(movies_maxnorm_layer)
 movies_embedded_dropout = tf.keras.layers.Dropout(second_dropout_rate)(movies_embedded)
 movies_embedded_maxnorm = tf.keras.constraints.MaxNorm(max_value=maxnorm_max_value, axis=0)(movies_embedded_dropout)
@@ -173,7 +174,7 @@ linear_layer = tf.keras.layers.Dense(
         1,
         activation="linear",
         kernel_initializer='glorot_normal',
-        bias_initializer='zeros',
+        bias_initializer='zeros'
         )(dot_product)
 
 # Construct the model
@@ -199,6 +200,7 @@ model.compile(
 # Batch size and epochs as proposed by Sergio Salazar
 n_epochs = 100
 batch_size = 128
+print("Using Num epochs: {} Batch size: {}". format(n_epochs, batch_size))
 
 start_time = time.time()
 history = model.fit(
@@ -207,7 +209,7 @@ history = model.fit(
         epochs=n_epochs,
         batch_size=batch_size,
         validation_data=([test_user,test_movie], test_labels),
-        verbose=2,
+        verbose=2
         )
 elapsed_time = time.time() - start_time
 print("Execution time: {:.1f}".format(elapsed_time))

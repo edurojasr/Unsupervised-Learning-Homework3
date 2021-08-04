@@ -73,7 +73,7 @@ Package                 Version
 * Execution time: 280.7
 * Best Test RMSE: 0.9266 at epoch 17
 
-# Current best results (updated 3-ago-2021 11:28am)
+# Current best results (updated 3-ago-2021 7:41pm)
 
 Parameters:
 
@@ -82,17 +82,16 @@ Parameters:
 * Dropout rate first layers: 0.5
 * Dropout rate second layers: 0
 * Max-Norm max value: 4
+* Using activation function: LeakyReLU
 * Optimizer: Adagrad.  Learning rate=0.03
-* Activation funcion for users hidden layer and movies hidden layer: LeakyRelu
-* Batch Size: 128
-* Number of epochs: 100
+* Using Num epochs: 100 Batch size: 128
 
-![test_results](img/validation_7.png)
+![test_results](img/validation_8.png)
 
 
-* Run 1: Execution time: 376.5 Best Test RMSE:      0.8968 at epoch: 74
-* Run 2: Execution time: 372.8 Best Test RMSE:      0.8950 at epoch: 73
-* Run 3: Execution time: 335.5 Best Test RMSE:      0.8953 at epoch: 79
+Run 1: Execution time: 323.5 Best Test RMSE: 0.8946 at epoch: 63
+Run 2: Execution time: 299.5 Best Test RMSE: 0.8964 at epoch: 75
+Run 3: Execution time: 303.2 Best Test RMSE: 0.8955 at epoch: 76
 
 # Experiments with hidden nodes and latents factors
 
@@ -119,7 +118,7 @@ and 50 latent factor are optimal for this exercise
 
 # Validation team
 
-Unsupervised Learning Class 2021!!!
+**Unsupervised Learning Class 2021!!!**
 
 ## Texas Tech University – Costa Rica
 ###  Executive Education Program
