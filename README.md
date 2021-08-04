@@ -73,15 +73,15 @@ Package                 Version
 * Execution time: 280.7
 * Best Test RMSE: 0.9266 at epoch 17
 
-# Current best results (updated 3-ago-2021 7:41pm)
+# Current best results (updated 3-ago-2021 8:15pm)
 
 Parameters:
 
 * Factorizing into 50 latent factors
-* With 100 hidden nodes
+* With 150 hidden nodes
 * Dropout rate first layers: 0.5
 * Dropout rate second layers: 0
-* Max-Norm max value: 4
+* Max-Norm max value: 6
 * Using activation function: LeakyReLU
 * Optimizer: Adagrad.  Learning rate=0.03
 * Using Num epochs: 100 Batch size: 128
