@@ -107,7 +107,7 @@ n_movie_cols = train_movie.shape[1]
 # Values proposed by Cristian
 # After the collective hidden nodes and latent factors experiments
 n_latent_factors = 50
-n_hidden = 150 # by 100 Rafael 150 mariobg97
+n_hidden = 200 # by 100 Rafael 150 mariobg97 200 cjv88 and cris
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
@@ -116,7 +116,7 @@ print("With {} hidden nodes".format(n_hidden))
 # Drop values proposed by Diana
 # Maxnorm added by Michael
 # New parameters by Professor Rojas and others
-first_dropout_rate = 0.5
+first_dropout_rate = 0.6 # By cjv88
 second_dropout_rate = 0 # By Dr Rojas
 maxnorm_max_value = 6 # By 4 Deykel 6 mariobg97
 print("Dropout rate first layers: {}".format(first_dropout_rate))
@@ -199,7 +199,7 @@ model.compile(
 # Train the neural network
 # Batch size and epochs as proposed by Sergio Salazar
 n_epochs = 100
-batch_size = 128
+batch_size = 160 # by 128 Sergio 160 cjv88 and cris
 print("Using Num epochs: {} Batch size: {}". format(n_epochs, batch_size))
 
 start_time = time.time()
