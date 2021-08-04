@@ -107,7 +107,7 @@ n_movie_cols = train_movie.shape[1]
 # Values proposed by Cristian
 # After the collective hidden nodes and latent factors experiments
 n_latent_factors = 50
-n_hidden = 100 # by Rafael
+n_hidden = 150 # by 100 Rafael 150 mariobg97
 print("Factorizing into {} latent factors".format(n_latent_factors))
 print("With {} hidden nodes".format(n_hidden))
 
@@ -118,7 +118,7 @@ print("With {} hidden nodes".format(n_hidden))
 # New parameters by Professor Rojas and others
 first_dropout_rate = 0.5
 second_dropout_rate = 0 # By Dr Rojas
-maxnorm_max_value = 4 # By Deykel
+maxnorm_max_value = 6 # By 4 Deykel 6 mariobg97
 print("Dropout rate first layers: {}".format(first_dropout_rate))
 print("Dropout rate second layers: {}".format(second_dropout_rate))
 print("Max-Norm max value: {}".format(maxnorm_max_value))

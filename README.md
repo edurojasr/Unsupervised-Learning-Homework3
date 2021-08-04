@@ -86,12 +86,11 @@ Parameters:
 * Optimizer: Adagrad.  Learning rate=0.03
 * Using Num epochs: 100 Batch size: 128
 
-![test_results](img/validation_8.png)
+![test_results](img/validacion_9.png)
 
-
-* Run 1: Execution time: 323.5 Best Test RMSE: 0.8946 at epoch: 63
-* Run 2: Execution time: 299.5 Best Test RMSE: 0.8964 at epoch: 75
-* Run 3: Execution time: 303.2 Best Test RMSE: 0.8955 at epoch: 76
+* Run 1: Execution time: 313.5 Best Test RMSE: 0.8963 at epoch: 53
+* Run 2: Execution time: 315.9 Best Test RMSE: 0.8949 at epoch: 71
+* **Run 3: Execution time: 319.5 Best Test RMSE: 0.8938 at epoch: 78**
 
 # Experiments with hidden nodes and latents factors
 
@@ -114,6 +113,7 @@ and 50 latent factor are optimal for this exercise
 * Deykel
 * alcofo2191
 * mriosm1992
+* mariobg97
 * eduardo.rojasr
 
 # Validation team
