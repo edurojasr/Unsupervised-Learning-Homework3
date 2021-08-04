@@ -89,9 +89,9 @@ Parameters:
 ![test_results](img/validation_8.png)
 
 
-Run 1: Execution time: 323.5 Best Test RMSE: 0.8946 at epoch: 63
-Run 2: Execution time: 299.5 Best Test RMSE: 0.8964 at epoch: 75
-Run 3: Execution time: 303.2 Best Test RMSE: 0.8955 at epoch: 76
+* Run 1: Execution time: 323.5 Best Test RMSE: 0.8946 at epoch: 63
+* Run 2: Execution time: 299.5 Best Test RMSE: 0.8964 at epoch: 75
+* Run 3: Execution time: 303.2 Best Test RMSE: 0.8955 at epoch: 76
 
 # Experiments with hidden nodes and latents factors
 
