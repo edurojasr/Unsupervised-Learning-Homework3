@@ -186,6 +186,7 @@ model = tf.keras.Model([users_input, movies_input], linear_layer)
 # Define the optimizer
 
 # Optimizer
+# Change ADAM to Adagrad by cjv88
 learning_rate=0.03
 optimizer = tf.keras.optimizers.Adagrad(learning_rate=learning_rate)
 print("Optimizer: Adagrad.  Learning rate={}".format(learning_rate))
